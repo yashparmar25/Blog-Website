@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    image: blog-website-backend:latest  # use existing image
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/app
+    depends_on:
+      - mongo
+
+  frontend:
+    image: my-frontend  # use existing image
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
