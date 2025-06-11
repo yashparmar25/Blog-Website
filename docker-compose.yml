@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: blog-website-backend:latest  # use existing image
+    image: yashparmar2055/blog-website-backend:latest  # You can also push this to Docker Hub if needed
     ports:
       - "3000:3000"
     env_file:
@@ -13,7 +13,7 @@ services:
       - mongo
 
   frontend:
-    image: my-frontend  # use existing image
+    image: yashparmar2055/my-frontend:latest  # Use public Docker Hub image
     ports:
       - "5173:5173"
     depends_on:
